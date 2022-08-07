@@ -7,6 +7,7 @@ module kernel_module !Tada 2006
   public Kdyns221, Kdyns222, Kdyns223, Kdyns231, Kdyns232, Kdyns233
   public Kdyns311, Kdyns312, Kdyns313, Kdyns321, Kdyns322, Kdyns323
   public Kdyns331, Kdyns332, Kdyns333
+  public Kdyns_all
   public Kdynf111, Kdynf112, Kdynf113, Kdynf121, Kdynf122, Kdynf123
   public Kdynf131, Kdynf132, Kdynf133, Kdynf211, Kdynf212, Kdynf213
   public Kdynf221, Kdynf222, Kdynf223, Kdynf231, Kdynf232, Kdynf233
@@ -41,7 +42,6 @@ module kernel_module !Tada 2006
   real(8) :: lds332(0:4-1,0:6-1)
   real(8) :: lds333(0:5-1,0:6-1)
   
- 
   real(8) :: zii1s(0:3-1)
   real(8) :: zi1s(0:3-1)
   real(8) :: z2s(0:3-1)
@@ -2112,10 +2112,188 @@ contains
     call Ldyns333(zi1,z2,z3,costa,sinta,5) 
   end subroutine Kdyns333
 
-  !(subroutine Kdynf: compute stress Green function L created by constant slip rate of unit magnitude)
-  real(8) function Kdynf111(xr1,xr2,xr3,xsa1,xsa2,xsb1,xsb2,xsc1,xsc2,xs3,t,delt)
+  !(subroutine Kdyns_all: If receiver & source are fixed, you don't need to compute Rotcoordnt every time!)
+  subroutine Kdyns_all(xr1,xr2,xr3,xsa1,xsa2,xsb1,xsb2,xsc1,xsc2,xs3)
     implicit none
-    real(8),intent(in) :: xr1,xr2,xr3,xsa1,xsa2,xsb1,xsb2,xsc1,xsc2,xs3,t,delt
+    real(8),intent(in) :: xr1,xr2,xr3,xsa1,xsa2,xsb1,xsb2,xsc1,xsc2,xs3
+    real(8) :: z1a,zi1,zii1,z2,z3,costa,sinta
+ 
+    call Rotcoordnt(xr1,xr2,xr3,xsb1,xsb2,xsc1,xsc2,xs3,costa,sinta,zi1,zii1,z2,z3)
+    zii1s(0) = zii1 ; zi1s(0) = zi1 ; z2s(0) = z2 ; z3s(0) = z3
+    call Ldyns111(zii1,z2,z3,costa,sinta,0)
+    call Ldyns111(zi1,z2,z3,costa,sinta,1)
+    call Ldyns112(zii1,z2,z3,costa,sinta,0)
+    call Ldyns112(zi1,z2,z3,costa,sinta,1)
+    call Ldyns113(zii1,z2,z3,costa,sinta,0)
+    call Ldyns113(zi1,z2,z3,costa,sinta,1)  
+    call Ldyns121(zii1,z2,z3,costa,sinta,0)
+    call Ldyns121(zi1,z2,z3,costa,sinta,1)
+    call Ldyns122(zii1,z2,z3,costa,sinta,0)
+    call Ldyns122(zi1,z2,z3,costa,sinta,1)
+    call Ldyns123(zii1,z2,z3,costa,sinta,0)
+    call Ldyns123(zi1,z2,z3,costa,sinta,1)
+    call Ldyns131(zii1,z2,z3,costa,sinta,0)
+    call Ldyns131(zi1,z2,z3,costa,sinta,1)
+    call Ldyns132(zii1,z2,z3,costa,sinta,0)
+    call Ldyns132(zi1,z2,z3,costa,sinta,1)
+    call Ldyns133(zii1,z2,z3,costa,sinta,0)
+    call Ldyns133(zi1,z2,z3,costa,sinta,1)   
+    call Ldyns211(zii1,z2,z3,costa,sinta,0)
+    call Ldyns211(zi1,z2,z3,costa,sinta,1)
+    call Ldyns212(zii1,z2,z3,costa,sinta,0)
+    call Ldyns212(zi1,z2,z3,costa,sinta,1)
+    call Ldyns213(zii1,z2,z3,costa,sinta,0)
+    call Ldyns213(zi1,z2,z3,costa,sinta,1)  
+    call Ldyns221(zii1,z2,z3,costa,sinta,0)
+    call Ldyns221(zi1,z2,z3,costa,sinta,1)
+    call Ldyns222(zii1,z2,z3,costa,sinta,0)
+    call Ldyns222(zi1,z2,z3,costa,sinta,1)
+    call Ldyns223(zii1,z2,z3,costa,sinta,0)
+    call Ldyns223(zi1,z2,z3,costa,sinta,1)
+    call Ldyns231(zii1,z2,z3,costa,sinta,0)
+    call Ldyns231(zi1,z2,z3,costa,sinta,1)
+    call Ldyns232(zii1,z2,z3,costa,sinta,0)
+    call Ldyns232(zi1,z2,z3,costa,sinta,1)
+    call Ldyns233(zii1,z2,z3,costa,sinta,0)
+    call Ldyns233(zi1,z2,z3,costa,sinta,1)
+    call Ldyns311(zii1,z2,z3,costa,sinta,0)
+    call Ldyns311(zi1,z2,z3,costa,sinta,1)
+    call Ldyns312(zii1,z2,z3,costa,sinta,0)
+    call Ldyns312(zi1,z2,z3,costa,sinta,1)
+    call Ldyns313(zii1,z2,z3,costa,sinta,0)
+    call Ldyns313(zi1,z2,z3,costa,sinta,1)  
+    call Ldyns321(zii1,z2,z3,costa,sinta,0)
+    call Ldyns321(zi1,z2,z3,costa,sinta,1)
+    call Ldyns322(zii1,z2,z3,costa,sinta,0)
+    call Ldyns322(zi1,z2,z3,costa,sinta,1)
+    call Ldyns323(zii1,z2,z3,costa,sinta,0)
+    call Ldyns323(zi1,z2,z3,costa,sinta,1)
+    call Ldyns331(zii1,z2,z3,costa,sinta,0)
+    call Ldyns331(zi1,z2,z3,costa,sinta,1)
+    call Ldyns332(zii1,z2,z3,costa,sinta,0)
+    call Ldyns332(zi1,z2,z3,costa,sinta,1)
+    call Ldyns333(zii1,z2,z3,costa,sinta,0)
+    call Ldyns333(zi1,z2,z3,costa,sinta,1)
+ 
+    call Rotcoordnt(xr1,xr2,xr3,xsc1,xsc2,xsa1,xsa2,xs3,costa,sinta,zi1,zii1,z2,z3)
+    zii1s(1) = zii1 ; zi1s(1) = zi1 ; z2s(1) = z2 ; z3s(1) = z3
+    call Ldyns111(zii1,z2,z3,costa,sinta,2)
+    call Ldyns111(zi1,z2,z3,costa,sinta,3)
+    call Ldyns112(zii1,z2,z3,costa,sinta,2)
+    call Ldyns112(zi1,z2,z3,costa,sinta,3)
+    call Ldyns113(zii1,z2,z3,costa,sinta,2)
+    call Ldyns113(zi1,z2,z3,costa,sinta,3)  
+    call Ldyns121(zii1,z2,z3,costa,sinta,2)
+    call Ldyns121(zi1,z2,z3,costa,sinta,3)
+    call Ldyns122(zii1,z2,z3,costa,sinta,2)
+    call Ldyns122(zi1,z2,z3,costa,sinta,3)
+    call Ldyns123(zii1,z2,z3,costa,sinta,2)
+    call Ldyns123(zi1,z2,z3,costa,sinta,3)
+    call Ldyns131(zii1,z2,z3,costa,sinta,2)
+    call Ldyns131(zi1,z2,z3,costa,sinta,3)
+    call Ldyns132(zii1,z2,z3,costa,sinta,2)
+    call Ldyns132(zi1,z2,z3,costa,sinta,3)
+    call Ldyns133(zii1,z2,z3,costa,sinta,2)
+    call Ldyns133(zi1,z2,z3,costa,sinta,3)
+    call Ldyns211(zii1,z2,z3,costa,sinta,2)
+    call Ldyns211(zi1,z2,z3,costa,sinta,3)
+    call Ldyns212(zii1,z2,z3,costa,sinta,2)
+    call Ldyns212(zi1,z2,z3,costa,sinta,3)
+    call Ldyns213(zii1,z2,z3,costa,sinta,2)
+    call Ldyns213(zi1,z2,z3,costa,sinta,3)  
+    call Ldyns221(zii1,z2,z3,costa,sinta,2)
+    call Ldyns221(zi1,z2,z3,costa,sinta,3)
+    call Ldyns222(zii1,z2,z3,costa,sinta,2)
+    call Ldyns222(zi1,z2,z3,costa,sinta,3)
+    call Ldyns223(zii1,z2,z3,costa,sinta,2)
+    call Ldyns223(zi1,z2,z3,costa,sinta,3)
+    call Ldyns231(zii1,z2,z3,costa,sinta,2)
+    call Ldyns231(zi1,z2,z3,costa,sinta,3)
+    call Ldyns232(zii1,z2,z3,costa,sinta,2)
+    call Ldyns232(zi1,z2,z3,costa,sinta,3)
+    call Ldyns233(zii1,z2,z3,costa,sinta,2)
+    call Ldyns233(zi1,z2,z3,costa,sinta,3)
+    call Ldyns311(zii1,z2,z3,costa,sinta,2)
+    call Ldyns311(zi1,z2,z3,costa,sinta,3)
+    call Ldyns312(zii1,z2,z3,costa,sinta,2)
+    call Ldyns312(zi1,z2,z3,costa,sinta,3)
+    call Ldyns313(zii1,z2,z3,costa,sinta,2)
+    call Ldyns313(zi1,z2,z3,costa,sinta,3)  
+    call Ldyns321(zii1,z2,z3,costa,sinta,2)
+    call Ldyns321(zi1,z2,z3,costa,sinta,3)
+    call Ldyns322(zii1,z2,z3,costa,sinta,2)
+    call Ldyns322(zi1,z2,z3,costa,sinta,3)
+    call Ldyns323(zii1,z2,z3,costa,sinta,2)
+    call Ldyns323(zi1,z2,z3,costa,sinta,3)
+    call Ldyns331(zii1,z2,z3,costa,sinta,2)
+    call Ldyns331(zi1,z2,z3,costa,sinta,3)
+    call Ldyns332(zii1,z2,z3,costa,sinta,2)
+    call Ldyns332(zi1,z2,z3,costa,sinta,3)
+    call Ldyns333(zii1,z2,z3,costa,sinta,2)
+    call Ldyns333(zi1,z2,z3,costa,sinta,3)
+ 
+    call Rotcoordnt(xr1,xr2,xr3,xsa1,xsa2,xsb1,xsb2,xs3,costa,sinta,zi1,zii1,z2,z3)
+    zii1s(2) = zii1 ; zi1s(2) = zi1 ; z2s(2) = z2 ; z3s(2) = z3
+    call Ldyns111(zii1,z2,z3,costa,sinta,4)
+    call Ldyns111(zi1,z2,z3,costa,sinta,5)
+    call Ldyns112(zii1,z2,z3,costa,sinta,4)
+    call Ldyns112(zi1,z2,z3,costa,sinta,5)
+    call Ldyns113(zii1,z2,z3,costa,sinta,4)
+    call Ldyns113(zi1,z2,z3,costa,sinta,5)  
+    call Ldyns121(zii1,z2,z3,costa,sinta,4)
+    call Ldyns121(zi1,z2,z3,costa,sinta,5)
+    call Ldyns122(zii1,z2,z3,costa,sinta,4)
+    call Ldyns122(zi1,z2,z3,costa,sinta,5)
+    call Ldyns123(zii1,z2,z3,costa,sinta,4)
+    call Ldyns123(zi1,z2,z3,costa,sinta,5)
+    call Ldyns131(zii1,z2,z3,costa,sinta,4)
+    call Ldyns131(zi1,z2,z3,costa,sinta,5)
+    call Ldyns132(zii1,z2,z3,costa,sinta,4)
+    call Ldyns132(zi1,z2,z3,costa,sinta,5)
+    call Ldyns133(zii1,z2,z3,costa,sinta,4)
+    call Ldyns133(zi1,z2,z3,costa,sinta,5)
+    call Ldyns211(zii1,z2,z3,costa,sinta,4)
+    call Ldyns211(zi1,z2,z3,costa,sinta,5)
+    call Ldyns212(zii1,z2,z3,costa,sinta,4)
+    call Ldyns212(zi1,z2,z3,costa,sinta,5)
+    call Ldyns213(zii1,z2,z3,costa,sinta,4)
+    call Ldyns213(zi1,z2,z3,costa,sinta,5)  
+    call Ldyns221(zii1,z2,z3,costa,sinta,4)
+    call Ldyns221(zi1,z2,z3,costa,sinta,5)
+    call Ldyns222(zii1,z2,z3,costa,sinta,4)
+    call Ldyns222(zi1,z2,z3,costa,sinta,5)
+    call Ldyns223(zii1,z2,z3,costa,sinta,4)
+    call Ldyns223(zi1,z2,z3,costa,sinta,5)
+    call Ldyns231(zii1,z2,z3,costa,sinta,4)
+    call Ldyns231(zi1,z2,z3,costa,sinta,5)
+    call Ldyns232(zii1,z2,z3,costa,sinta,4)
+    call Ldyns232(zi1,z2,z3,costa,sinta,5)
+    call Ldyns233(zii1,z2,z3,costa,sinta,4)
+    call Ldyns233(zi1,z2,z3,costa,sinta,5)
+    call Ldyns311(zii1,z2,z3,costa,sinta,4)
+    call Ldyns311(zi1,z2,z3,costa,sinta,5)
+    call Ldyns312(zii1,z2,z3,costa,sinta,4)
+    call Ldyns312(zi1,z2,z3,costa,sinta,5)
+    call Ldyns313(zii1,z2,z3,costa,sinta,4)
+    call Ldyns313(zi1,z2,z3,costa,sinta,5)  
+    call Ldyns321(zii1,z2,z3,costa,sinta,4)
+    call Ldyns321(zi1,z2,z3,costa,sinta,5)
+    call Ldyns322(zii1,z2,z3,costa,sinta,4)
+    call Ldyns322(zi1,z2,z3,costa,sinta,5)
+    call Ldyns323(zii1,z2,z3,costa,sinta,4)
+    call Ldyns323(zi1,z2,z3,costa,sinta,5)
+    call Ldyns331(zii1,z2,z3,costa,sinta,4)
+    call Ldyns331(zi1,z2,z3,costa,sinta,5)
+    call Ldyns332(zii1,z2,z3,costa,sinta,4)
+    call Ldyns332(zi1,z2,z3,costa,sinta,5)
+    call Ldyns333(zii1,z2,z3,costa,sinta,4)
+    call Ldyns333(zi1,z2,z3,costa,sinta,5)  
+  end subroutine Kdyns_all
+
+  !(subroutine Kdynf: compute stress Green function L created by constant slip rate of unit magnitude)
+  real(8) function Kdynf111(t,delt)
+    implicit none
+    real(8),intent(in) :: t,delt
     real(8) :: L111,L111t
 
     L111t = Ldynf111(zii1s(0),z2s(0),z3s(0),t,0)&
@@ -2136,9 +2314,9 @@ contains
     Kdynf111 = L111
   end function Kdynf111
 
-  real(8) function Kdynf112(xr1,xr2,xr3,xsa1,xsa2,xsb1,xsb2,xsc1,xsc2,xs3,t,delt)
+  real(8) function Kdynf112(t,delt)
     implicit none
-    real(8),intent(in) :: xr1,xr2,xr3,xsa1,xsa2,xsb1,xsb2,xsc1,xsc2,xs3,t,delt
+    real(8),intent(in) :: t,delt
     real(8) :: L112,L112t
 
     L112t = Ldynf112(zii1s(0),z2s(0),z3s(0),t,0)&
@@ -2159,9 +2337,9 @@ contains
     Kdynf112 = L112
   end function Kdynf112
 
-  real(8) function Kdynf113(xr1,xr2,xr3,xsa1,xsa2,xsb1,xsb2,xsc1,xsc2,xs3,t,delt)
+  real(8) function Kdynf113(t,delt)
     implicit none
-    real(8),intent(in) :: xr1,xr2,xr3,xsa1,xsa2,xsb1,xsb2,xsc1,xsc2,xs3,t,delt
+    real(8),intent(in) ::t,delt
     real(8) :: L113,L113t
 
     L113t = Ldynf113(zii1s(0),z2s(0),z3s(0),t,0)&
@@ -2184,9 +2362,9 @@ contains
     Kdynf113 = L113
   end function Kdynf113
 
-  real(8) function Kdynf121(xr1,xr2,xr3,xsa1,xsa2,xsb1,xsb2,xsc1,xsc2,xs3,t,delt)
+  real(8) function Kdynf121(t,delt)
     implicit none
-    real(8),intent(in) :: xr1,xr2,xr3,xsa1,xsa2,xsb1,xsb2,xsc1,xsc2,xs3,t,delt
+    real(8),intent(in) :: t,delt
     real(8)::L121,L121t
 
     L121t = Ldynf121(zii1s(0),z2s(0),z3s(0),t,0)&
@@ -2207,9 +2385,9 @@ contains
     Kdynf121 = L121
   end function Kdynf121
 
-  real(8) function Kdynf122(xr1,xr2,xr3,xsa1,xsa2,xsb1,xsb2,xsc1,xsc2,xs3,t,delt)
+  real(8) function Kdynf122(t,delt)
     implicit none
-    real(8),intent(in) :: xr1,xr2,xr3,xsa1,xsa2,xsb1,xsb2,xsc1,xsc2,xs3,t,delt
+    real(8),intent(in) :: t,delt
     real(8) :: L122,L122t
 
     L122 = Ldynf122(zii1s(0),z2s(0),z3s(0),t,0)&
@@ -2231,9 +2409,9 @@ contains
   end function Kdynf122
 
 
-  real(8) function Kdynf123(xr1,xr2,xr3,xsa1,xsa2,xsb1,xsb2,xsc1,xsc2,xs3,t,delt)
+  real(8) function Kdynf123(t,delt)
     implicit none
-    real(8),intent(in) :: xr1,xr2,xr3,xsa1,xsa2,xsb1,xsb2,xsc1,xsc2,xs3,t,delt
+    real(8),intent(in) :: t,delt
     real(8) :: L123,L123t
 
     L123t = Ldynf123(zii1s(0),z2s(0),z3s(0),t,0)&
@@ -2254,9 +2432,9 @@ contains
     Kdynf123 = L123
   end function Kdynf123
 
-  real(8) function Kdynf131(xr1,xr2,xr3,xsa1,xsa2,xsb1,xsb2,xsc1,xsc2,xs3,t,delt)
+  real(8) function Kdynf131(t,delt)
     implicit none
-    real(8),intent(in) :: xr1,xr2,xr3,xsa1,xsa2,xsb1,xsb2,xsc1,xsc2,xs3,t,delt
+    real(8),intent(in) :: t,delt
     real(8) :: L131,L131t
     
     L131t = Ldynf131(zii1s(0),z2s(0),z3s(0),t,0)&
@@ -2277,9 +2455,9 @@ contains
     Kdynf131 = L131
   end function Kdynf131
 
-  real(8) function Kdynf132(xr1,xr2,xr3,xsa1,xsa2,xsb1,xsb2,xsc1,xsc2,xs3,t,delt)
+  real(8) function Kdynf132(t,delt)
     implicit none
-    real(8),intent(in) :: xr1,xr2,xr3,xsa1,xsa2,xsb1,xsb2,xsc1,xsc2,xs3,t,delt
+    real(8),intent(in) :: t,delt
     real(8) :: L132,L132t
     
     L132t = Ldynf132(zii1s(0),z2s(0),z3s(0),t,0)&
@@ -2300,9 +2478,9 @@ contains
     Kdynf132 = L132
   end function Kdynf132
 
-  real(8) function Kdynf133(xr1,xr2,xr3,xsa1,xsa2,xsb1,xsb2,xsc1,xsc2,xs3,t,delt)
+  real(8) function Kdynf133(t,delt)
     implicit none
-    real(8),intent(in) :: xr1,xr2,xr3,xsa1,xsa2,xsb1,xsb2,xsc1,xsc2,xs3,t,delt
+    real(8),intent(in) :: t,delt
     real(8) :: L133,L133t
     
     L133t = Ldynf133(zii1s(0),z2s(0),z3s(0),t,0)&
@@ -2323,9 +2501,9 @@ contains
     Kdynf133 = L133
   end function Kdynf133
 
-  real(8) function Kdynf211(xr1,xr2,xr3,xsa1,xsa2,xsb1,xsb2,xsc1,xsc2,xs3,t,delt)
+  real(8) function Kdynf211(t,delt)
     implicit none
-    real(8),intent(in) :: xr1,xr2,xr3,xsa1,xsa2,xsb1,xsb2,xsc1,xsc2,xs3,t,delt
+    real(8),intent(in) :: t,delt
     real(8) :: L211,L211t
 
     L211t = Ldynf211(zii1s(0),z2s(0),z3s(0),t,0)&
@@ -2346,9 +2524,9 @@ contains
     Kdynf211 = L211
   end function Kdynf211
 
-  real(8) function Kdynf212(xr1,xr2,xr3,xsa1,xsa2,xsb1,xsb2,xsc1,xsc2,xs3,t,delt)
+  real(8) function Kdynf212(t,delt)
     implicit none
-    real(8),intent(in) :: xr1,xr2,xr3,xsa1,xsa2,xsb1,xsb2,xsc1,xsc2,xs3,t,delt
+    real(8),intent(in) :: t,delt
     real(8) :: L212,L212t
 
     L212t = Ldynf212(zii1s(0),z2s(0),z3s(0),t,0)&
@@ -2369,9 +2547,9 @@ contains
     Kdynf212 = L212
   end function Kdynf212
 
-  real(8) function Kdynf213(xr1,xr2,xr3,xsa1,xsa2,xsb1,xsb2,xsc1,xsc2,xs3,t,delt)
+  real(8) function Kdynf213(t,delt)
     implicit none
-    real(8),intent(in) :: xr1,xr2,xr3,xsa1,xsa2,xsb1,xsb2,xsc1,xsc2,xs3,t,delt
+    real(8),intent(in) :: t,delt
     real(8) :: L213,L213t
 
     L213t = Ldynf213(zii1s(0),z2s(0),z3s(0),t,0)&
@@ -2392,9 +2570,9 @@ contains
     Kdynf213 = L213
   end function Kdynf213
 
-  real(8) function Kdynf221(xr1,xr2,xr3,xsa1,xsa2,xsb1,xsb2,xsc1,xsc2,xs3,t,delt)
+  real(8) function Kdynf221(t,delt)
     implicit none
-    real(8),intent(in) :: xr1,xr2,xr3,xsa1,xsa2,xsb1,xsb2,xsc1,xsc2,xs3,t,delt
+    real(8),intent(in) :: t,delt
     real(8) :: L221,L221t
 
     L221t = Ldynf221(zii1s(0),z2s(0),z3s(0),t,0)&
@@ -2415,9 +2593,9 @@ contains
     Kdynf221 = L221
   end function Kdynf221
 
-  real(8) function Kdynf222(xr1,xr2,xr3,xsa1,xsa2,xsb1,xsb2,xsc1,xsc2,xs3,t,delt)
+  real(8) function Kdynf222(t,delt)
     implicit none
-    real(8),intent(in) :: xr1,xr2,xr3,xsa1,xsa2,xsb1,xsb2,xsc1,xsc2,xs3,t,delt
+    real(8),intent(in) :: t,delt
     real(8) :: L222,L222t
 
     L222t = Ldynf222(zii1s(0),z2s(0),z3s(0),t,0)&
@@ -2438,9 +2616,9 @@ contains
     Kdynf222 = L222
   end function Kdynf222
 
-  real(8) function Kdynf223(xr1,xr2,xr3,xsa1,xsa2,xsb1,xsb2,xsc1,xsc2,xs3,t,delt)
+  real(8) function Kdynf223(t,delt)
     implicit none
-    real(8),intent(in) :: xr1,xr2,xr3,xsa1,xsa2,xsb1,xsb2,xsc1,xsc2,xs3,t,delt
+    real(8),intent(in) :: t,delt
     real(8) :: L223,L223t
 
     L223 = Ldynf223(zii1s(0),z2s(0),z3s(0),t,0)&
@@ -2463,9 +2641,9 @@ contains
     Kdynf223 = L223
   end function Kdynf223
 
-  real(8) function Kdynf231(xr1,xr2,xr3,xsa1,xsa2,xsb1,xsb2,xsc1,xsc2,xs3,t,delt)
+  real(8) function Kdynf231(t,delt)
     implicit none
-    real(8),intent(in) :: xr1,xr2,xr3,xsa1,xsa2,xsb1,xsb2,xsc1,xsc2,xs3,t,delt
+    real(8),intent(in) :: t,delt
     real(8) :: L231,L231t
 
     L231t = Ldynf231(zii1s(0),z2s(0),z3s(0),t,0)&
@@ -2486,9 +2664,9 @@ contains
     Kdynf231 = L231
   end function Kdynf231
 
-  real(8) function Kdynf232(xr1,xr2,xr3,xsa1,xsa2,xsb1,xsb2,xsc1,xsc2,xs3,t,delt)
+  real(8) function Kdynf232(t,delt)
     implicit none
-    real(8),intent(in) :: xr1,xr2,xr3,xsa1,xsa2,xsb1,xsb2,xsc1,xsc2,xs3,t,delt
+    real(8),intent(in) :: t,delt
     real(8) :: L232,L232t
 
     L232t = Ldynf232(zii1s(0),z2s(0),z3s(0),t,0)&
@@ -2509,9 +2687,9 @@ contains
     Kdynf232 = L232
   end function Kdynf232
 
-  real(8) function Kdynf233(xr1,xr2,xr3,xsa1,xsa2,xsb1,xsb2,xsc1,xsc2,xs3,t,delt)
+  real(8) function Kdynf233(t,delt)
     implicit none
-    real(8),intent(in) :: xr1,xr2,xr3,xsa1,xsa2,xsb1,xsb2,xsc1,xsc2,xs3,t,delt
+    real(8),intent(in) :: t,delt
     real(8) :: L233,L233t
 
     L233t = Ldynf233(zii1s(0),z2s(0),z3s(0),t,0)&
@@ -2532,9 +2710,9 @@ contains
     Kdynf233 = L233
   end function Kdynf233
 
-  real(8) function Kdynf311(xr1,xr2,xr3,xsa1,xsa2,xsb1,xsb2,xsc1,xsc2,xs3,t,delt)
+  real(8) function Kdynf311(t,delt)
     implicit none
-    real(8),intent(in) :: xr1,xr2,xr3,xsa1,xsa2,xsb1,xsb2,xsc1,xsc2,xs3,t,delt
+    real(8),intent(in) :: t,delt
     real(8) :: L311,L311t
 
     L311t = Ldynf311(zii1s(0),z2s(0),z3s(0),t,0)&
@@ -2557,9 +2735,9 @@ contains
     Kdynf311 = L311
   end function Kdynf311
 
-  real(8) function Kdynf312(xr1,xr2,xr3,xsa1,xsa2,xsb1,xsb2,xsc1,xsc2,xs3,t,delt)
+  real(8) function Kdynf312(t,delt)
     implicit none
-    real(8),intent(in) :: xr1,xr2,xr3,xsa1,xsa2,xsb1,xsb2,xsc1,xsc2,xs3,t,delt
+    real(8),intent(in) :: t,delt
     real(8) :: L312,L312t
 
     L312t = Ldynf312(zii1s(0),z2s(0),z3s(0),t,0)&
@@ -2580,9 +2758,9 @@ contains
     Kdynf312 = L312
   end function Kdynf312
     
-  real(8) function Kdynf313(xr1,xr2,xr3,xsa1,xsa2,xsb1,xsb2,xsc1,xsc2,xs3,t,delt)
+  real(8) function Kdynf313(t,delt)
     implicit none
-    real(8),intent(in) :: xr1,xr2,xr3,xsa1,xsa2,xsb1,xsb2,xsc1,xsc2,xs3,t,delt
+    real(8),intent(in) :: t,delt
     real(8) :: L313,L313t
 
     L313t = Ldynf313(zii1s(0),z2s(0),z3s(0),t,0)&
@@ -2603,9 +2781,9 @@ contains
     Kdynf313 = L313
   end function Kdynf313
 
-  real(8) function Kdynf321(xr1,xr2,xr3,xsa1,xsa2,xsb1,xsb2,xsc1,xsc2,xs3,t,delt)
+  real(8) function Kdynf321(t,delt)
     implicit none
-    real(8),intent(in) :: xr1,xr2,xr3,xsa1,xsa2,xsb1,xsb2,xsc1,xsc2,xs3,t,delt
+    real(8),intent(in) :: t,delt
     real(8) :: L321,L321t
 
     L321t = Ldynf321(zii1s(0),z2s(0),z3s(0),t,0)&
@@ -2626,9 +2804,9 @@ contains
     Kdynf321 = L321
   end function Kdynf321
 
-  real(8) function Kdynf322(xr1,xr2,xr3,xsa1,xsa2,xsb1,xsb2,xsc1,xsc2,xs3,t,delt)
+  real(8) function Kdynf322(t,delt)
     implicit none
-    real(8),intent(in) :: xr1,xr2,xr3,xsa1,xsa2,xsb1,xsb2,xsc1,xsc2,xs3,t,delt
+    real(8),intent(in) :: t,delt
     real(8) :: L322,L322t
 
     L322 = Ldynf322(zii1s(0),z2s(0),z3s(0),t,0)&
@@ -2651,9 +2829,9 @@ contains
     Kdynf322 = L322
   end function Kdynf322
 
-  real(8) function Kdynf323(xr1,xr2,xr3,xsa1,xsa2,xsb1,xsb2,xsc1,xsc2,xs3,t,delt)
+  real(8) function Kdynf323(t,delt)
     implicit none
-    real(8),intent(in) :: xr1,xr2,xr3,xsa1,xsa2,xsb1,xsb2,xsc1,xsc2,xs3,t,delt
+    real(8),intent(in) :: t,delt
     real(8) :: L323,L323t
     
     L323t = Ldynf323(zii1s(0),z2s(0),z3s(0),t,0)&
@@ -2674,9 +2852,9 @@ contains
     Kdynf323 = L323
   end function Kdynf323
 
-  real(8) function Kdynf331(xr1,xr2,xr3,xsa1,xsa2,xsb1,xsb2,xsc1,xsc2,xs3,t,delt)
+  real(8) function Kdynf331(t,delt)
     implicit none
-    real(8),intent(in) :: xr1,xr2,xr3,xsa1,xsa2,xsb1,xsb2,xsc1,xsc2,xs3,t,delt
+    real(8),intent(in) :: t,delt
     real(8) :: L331,L331t
 
     L331t = Ldynf331(zii1s(0),z2s(0),z3s(0),t,0)&
@@ -2697,9 +2875,9 @@ contains
     Kdynf331 = L331
   end function Kdynf331
 
-  real(8) function Kdynf332(xr1,xr2,xr3,xsa1,xsa2,xsb1,xsb2,xsc1,xsc2,xs3,t,delt)
+  real(8) function Kdynf332(t,delt)
     implicit none
-    real(8),intent(in) :: xr1,xr2,xr3,xsa1,xsa2,xsb1,xsb2,xsc1,xsc2,xs3,t,delt
+    real(8),intent(in) :: t,delt
     real(8) :: L332,L332t
 
     L332t = Ldynf332(zii1s(0),z2s(0),z3s(0),t,0)&
@@ -2720,9 +2898,9 @@ contains
     Kdynf332 = L332
   end function Kdynf332
 
-  real(8) function Kdynf333(xr1,xr2,xr3,xsa1,xsa2,xsb1,xsb2,xsc1,xsc2,xs3,t,delt)
+  real(8) function Kdynf333(t,delt)
     implicit none
-    real(8),intent(in) :: xr1,xr2,xr3,xsa1,xsa2,xsb1,xsb2,xsc1,xsc2,xs3,t,delt
+    real(8),intent(in) :: t,delt
     real(8) :: L333,L333t
      
     L333t = Ldynf333(zii1s(0),z2s(0),z3s(0),t,0)&
