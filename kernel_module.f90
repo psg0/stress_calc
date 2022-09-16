@@ -2296,19 +2296,19 @@ contains
     real(8),intent(in) :: t,delt
     real(8) :: L111,L111t
 
-    L111t = Ldynf111(zii1s(0),z2s(0),z3s(0),t,0)&
+    L111t = Ldynf111(zii1s(0),z2s(0),z3s(0),t+delt,0)&
+         - Ldynf111(zi1s(0),z2s(0),z3s(0),t+delt,1)&
+         + Ldynf111(zii1s(1),z2s(1),z3s(1),t+delt,2)&
+         - Ldynf111(zi1s(1),z2s(1),z3s(1),t+delt,3)&
+         + Ldynf111(zii1s(2),z2s(2),z3s(2),t+delt,4)&
+         - Ldynf111(zi1s(2),z2s(2),z3s(2),t+delt,5)
+
+    L111 = Ldynf111(zii1s(0),z2s(0),z3s(0),t,0)&
          - Ldynf111(zi1s(0),z2s(0),z3s(0),t,1)&
          + Ldynf111(zii1s(1),z2s(1),z3s(1),t,2)&
          - Ldynf111(zi1s(1),z2s(1),z3s(1),t,3)&
          + Ldynf111(zii1s(2),z2s(2),z3s(2),t,4)&
          - Ldynf111(zi1s(2),z2s(2),z3s(2),t,5)
-
-    L111 = Ldynf111(zii1s(0),z2s(0),z3s(0),t-delt,0)&
-         - Ldynf111(zi1s(0),z2s(0),z3s(0),t-delt,1)&
-         + Ldynf111(zii1s(1),z2s(1),z3s(1),t-delt,2)&
-         - Ldynf111(zi1s(1),z2s(1),z3s(1),t-delt,3)&
-         + Ldynf111(zii1s(2),z2s(2),z3s(2),t-delt,4)&
-         - Ldynf111(zi1s(2),z2s(2),z3s(2),t-delt,5)
 
     L111 = L111t - L111
     Kdynf111 = L111
@@ -2319,19 +2319,19 @@ contains
     real(8),intent(in) :: t,delt
     real(8) :: L112,L112t
 
-    L112t = Ldynf112(zii1s(0),z2s(0),z3s(0),t,0)&
+    L112t = Ldynf112(zii1s(0),z2s(0),z3s(0),t+delt,0)&
+          - Ldynf112(zi1s(0),z2s(0),z3s(0),t+delt,1)&
+          + Ldynf112(zii1s(1),z2s(1),z3s(1),t+delt,2)&
+          - Ldynf112(zi1s(1),z2s(1),z3s(1),t+delt,3)&
+          + Ldynf112(zii1s(2),z2s(2),z3s(2),t+delt,4)&
+          - Ldynf112(zi1s(2),z2s(2),z3s(2),t+delt,5)
+
+    L112 = Ldynf112(zii1s(0),z2s(0),z3s(0),t,0)&
           - Ldynf112(zi1s(0),z2s(0),z3s(0),t,1)&
           + Ldynf112(zii1s(1),z2s(1),z3s(1),t,2)&
           - Ldynf112(zi1s(1),z2s(1),z3s(1),t,3)&
           + Ldynf112(zii1s(2),z2s(2),z3s(2),t,4)&
           - Ldynf112(zi1s(2),z2s(2),z3s(2),t,5)
-
-    L112 = Ldynf112(zii1s(0),z2s(0),z3s(0),t-delt,0)&
-          - Ldynf112(zi1s(0),z2s(0),z3s(0),t-delt,1)&
-          + Ldynf112(zii1s(1),z2s(1),z3s(1),t-delt,2)&
-          - Ldynf112(zi1s(1),z2s(1),z3s(1),t-delt,3)&
-          + Ldynf112(zii1s(2),z2s(2),z3s(2),t-delt,4)&
-          - Ldynf112(zi1s(2),z2s(2),z3s(2),t-delt,5)
       
     L112 = L112t - L112
     Kdynf112 = L112
@@ -2342,21 +2342,21 @@ contains
     real(8),intent(in) ::t,delt
     real(8) :: L113,L113t
 
-    L113t = Ldynf113(zii1s(0),z2s(0),z3s(0),t,0)&
-          - Ldynf113(zi1s(0),z2s(0),z3s(0),t,1)&
-          + Ldynf113(zii1s(1),z2s(1),z3s(1),t,2)&
-          - Ldynf113(zi1s(1),z2s(1),z3s(1),t,3)&
-          + Ldynf113(zii1s(2),z2s(2),z3s(2),t,4)&
-          - Ldynf113(zi1s(2),z2s(2),z3s(2),t,5)&
-          + Caa3*Hevix( z2s(0) )*Hevix( z2s(1) )*Hevix( z2s(2) )*Heviw( t-abs(z3s(0))/Cl )
+    L113t = Ldynf113(zii1s(0),z2s(0),z3s(0),t+delt,0)&
+          - Ldynf113(zi1s(0),z2s(0),z3s(0),t+delt,1)&
+          + Ldynf113(zii1s(1),z2s(1),z3s(1),t+delt,2)&
+          - Ldynf113(zi1s(1),z2s(1),z3s(1),t+delt,3)&
+          + Ldynf113(zii1s(2),z2s(2),z3s(2),t+delt,4)&
+          - Ldynf113(zi1s(2),z2s(2),z3s(2),t+delt,5)&
+          + Caa3*Hevix( z2s(0) )*Hevix( z2s(1) )*Hevix( z2s(2) )*Heviw( t+delt-abs(z3s(0))/Cl )
 
-    L113 = Ldynf113(zii1s(0),z2s(0),z3s(0),t-delt,0)&
-         - Ldynf113(zi1s(0),z2s(0),z3s(0),t-delt,1)&
-         + Ldynf113(zii1s(1),z2s(1),z3s(1),t-delt,2)&
-         - Ldynf113(zi1s(1),z2s(1),z3s(1),t-delt,3)&
-         + Ldynf113(zii1s(2),z2s(2),z3s(2),t-delt,4)&
-         - Ldynf113(zi1s(2),z2s(2),z3s(2),t-delt,5)&
-         + Caa3*Hevix( z2s(0) )*Hevix( z2s(1) )*Hevix( z2s(2) )*Heviw( t-delt-abs(z3s(0))/Cl )
+    L113 = Ldynf113(zii1s(0),z2s(0),z3s(0),t,0)&
+         - Ldynf113(zi1s(0),z2s(0),z3s(0),t,1)&
+         + Ldynf113(zii1s(1),z2s(1),z3s(1),t,2)&
+         - Ldynf113(zi1s(1),z2s(1),z3s(1),t,3)&
+         + Ldynf113(zii1s(2),z2s(2),z3s(2),t,4)&
+         - Ldynf113(zi1s(2),z2s(2),z3s(2),t,5)&
+         + Caa3*Hevix( z2s(0) )*Hevix( z2s(1) )*Hevix( z2s(2) )*Heviw( t-abs(z3s(0))/Cl )
 
     L113 = L113t - L113
     Kdynf113 = L113
@@ -2367,19 +2367,19 @@ contains
     real(8),intent(in) :: t,delt
     real(8)::L121,L121t
 
-    L121t = Ldynf121(zii1s(0),z2s(0),z3s(0),t,0)&
-          - Ldynf121(zi1s(0),z2s(0),z3s(0),t,1)&
-          + Ldynf121(zii1s(1),z2s(1),z3s(1),t,2)&
-          - Ldynf121(zi1s(1),z2s(1),z3s(1),t,3)&
-          + Ldynf121(zii1s(2),z2s(2),z3s(2),t,4)&
-          - Ldynf121(zi1s(2),z2s(2),z3s(2),t,5)
+    L121t = Ldynf121(zii1s(0),z2s(0),z3s(0),t+delt,0)&
+          - Ldynf121(zi1s(0),z2s(0),z3s(0),t+delt,1)&
+          + Ldynf121(zii1s(1),z2s(1),z3s(1),t+delt,2)&
+          - Ldynf121(zi1s(1),z2s(1),z3s(1),t+delt,3)&
+          + Ldynf121(zii1s(2),z2s(2),z3s(2),t+delt,4)&
+          - Ldynf121(zi1s(2),z2s(2),z3s(2),t+delt,5)
     
-    L121 = Ldynf121(zii1s(0),z2s(0),z3s(0),t-delt,0)&
-         - Ldynf121(zi1s(0),z2s(0),z3s(0),t-delt,1)&
-         + Ldynf121(zii1s(1),z2s(1),z3s(1),t-delt,2)&
-         - Ldynf121(zi1s(1),z2s(1),z3s(1),t-delt,3)&
-         + Ldynf121(zii1s(2),z2s(2),z3s(2),t-delt,4)&
-         - Ldynf121(zi1s(2),z2s(2),z3s(2),t-delt,5)
+    L121 = Ldynf121(zii1s(0),z2s(0),z3s(0),t,0)&
+         - Ldynf121(zi1s(0),z2s(0),z3s(0),t,1)&
+         + Ldynf121(zii1s(1),z2s(1),z3s(1),t,2)&
+         - Ldynf121(zi1s(1),z2s(1),z3s(1),t,3)&
+         + Ldynf121(zii1s(2),z2s(2),z3s(2),t,4)&
+         - Ldynf121(zi1s(2),z2s(2),z3s(2),t,5)
 
     L121 = L121t - L121
     Kdynf121 = L121
@@ -2390,19 +2390,19 @@ contains
     real(8),intent(in) :: t,delt
     real(8) :: L122,L122t
 
+    L122 = Ldynf122(zii1s(0),z2s(0),z3s(0),t+delt,0)&
+         - Ldynf122(zi1s(0),z2s(0),z3s(0),t+delt,1)&
+         + Ldynf122(zii1s(1),z2s(1),z3s(1),t+delt,2)&
+         - Ldynf122(zi1s(1),z2s(1),z3s(1),t+delt,3)&
+         + Ldynf122(zii1s(2),z2s(2),z3s(2),t+delt,4)&
+         - Ldynf122(zi1s(2),z2s(2),z3s(2),t+delt,5)
+
     L122 = Ldynf122(zii1s(0),z2s(0),z3s(0),t,0)&
          - Ldynf122(zi1s(0),z2s(0),z3s(0),t,1)&
          + Ldynf122(zii1s(1),z2s(1),z3s(1),t,2)&
          - Ldynf122(zi1s(1),z2s(1),z3s(1),t,3)&
          + Ldynf122(zii1s(2),z2s(2),z3s(2),t,4)&
          - Ldynf122(zi1s(2),z2s(2),z3s(2),t,5)
-
-    L122 = Ldynf122(zii1s(0),z2s(0),z3s(0),t-delt,0)&
-         - Ldynf122(zi1s(0),z2s(0),z3s(0),t-delt,1)&
-         + Ldynf122(zii1s(1),z2s(1),z3s(1),t-delt,2)&
-         - Ldynf122(zi1s(1),z2s(1),z3s(1),t-delt,3)&
-         + Ldynf122(zii1s(2),z2s(2),z3s(2),t-delt,4)&
-         - Ldynf122(zi1s(2),z2s(2),z3s(2),t-delt,5)
 
     L122 = L122t - L122
     Kdynf122 = L122
@@ -2414,19 +2414,19 @@ contains
     real(8),intent(in) :: t,delt
     real(8) :: L123,L123t
 
-    L123t = Ldynf123(zii1s(0),z2s(0),z3s(0),t,0)&
-          - Ldynf123(zi1s(0),z2s(0),z3s(0),t,1)&
-          + Ldynf123(zii1s(1),z2s(1),z3s(1),t,2)&
-          - Ldynf123(zi1s(1),z2s(1),z3s(1),t,3)&
-          + Ldynf123(zii1s(2),z2s(2),z3s(2),t,4)&
-          - Ldynf123(zi1s(2),z2s(2),z3s(2),t,5)
+    L123t = Ldynf123(zii1s(0),z2s(0),z3s(0),t+delt,0)&
+          - Ldynf123(zi1s(0),z2s(0),z3s(0),t+delt,1)&
+          + Ldynf123(zii1s(1),z2s(1),z3s(1),t+delt,2)&
+          - Ldynf123(zi1s(1),z2s(1),z3s(1),t+delt,3)&
+          + Ldynf123(zii1s(2),z2s(2),z3s(2),t+delt,4)&
+          - Ldynf123(zi1s(2),z2s(2),z3s(2),t+delt,5)
 
-    L123 = Ldynf123(zii1s(0),z2s(0),z3s(0),t-delt,0)&
-         - Ldynf123(zi1s(0),z2s(0),z3s(0),t-delt,1)&
-         + Ldynf123(zii1s(1),z2s(1),z3s(1),t-delt,2)&
-         - Ldynf123(zi1s(1),z2s(1),z3s(1),t-delt,3)&
-         + Ldynf123(zii1s(2),z2s(2),z3s(2),t-delt,4)&
-         - Ldynf123(zi1s(2),z2s(2),z3s(2),t-delt,5)
+    L123 = Ldynf123(zii1s(0),z2s(0),z3s(0),t,0)&
+         - Ldynf123(zi1s(0),z2s(0),z3s(0),t,1)&
+         + Ldynf123(zii1s(1),z2s(1),z3s(1),t,2)&
+         - Ldynf123(zi1s(1),z2s(1),z3s(1),t,3)&
+         + Ldynf123(zii1s(2),z2s(2),z3s(2),t,4)&
+         - Ldynf123(zi1s(2),z2s(2),z3s(2),t,5)
 
     L123 = L123t - L123
     Kdynf123 = L123
@@ -2437,19 +2437,19 @@ contains
     real(8),intent(in) :: t,delt
     real(8) :: L131,L131t
     
-    L131t = Ldynf131(zii1s(0),z2s(0),z3s(0),t,0)&
-          - Ldynf131(zi1s(0),z2s(0),z3s(0),t,1)&
-          + Ldynf131(zii1s(1),z2s(1),z3s(1),t,2)&
-          - Ldynf131(zi1s(1),z2s(1),z3s(1),t,3)&
-          + Ldynf131(zii1s(2),z2s(2),z3s(2),t,4)&
-          - Ldynf131(zi1s(2),z2s(2),z3s(2),t,5)
+    L131t = Ldynf131(zii1s(0),z2s(0),z3s(0),t+delt,0)&
+          - Ldynf131(zi1s(0),z2s(0),z3s(0),t+delt,1)&
+          + Ldynf131(zii1s(1),z2s(1),z3s(1),t+delt,2)&
+          - Ldynf131(zi1s(1),z2s(1),z3s(1),t+delt,3)&
+          + Ldynf131(zii1s(2),z2s(2),z3s(2),t+delt,4)&
+          - Ldynf131(zi1s(2),z2s(2),z3s(2),t+delt,5)
 
-    L131 = Ldynf131(zii1s(0),z2s(0),z3s(0),t-delt,0)&
-         - Ldynf131(zi1s(0),z2s(0),z3s(0),t-delt,1)&
-         + Ldynf131(zii1s(1),z2s(1),z3s(1),t-delt,2)&
-         - Ldynf131(zi1s(1),z2s(1),z3s(1),t-delt,3)&
-         + Ldynf131(zii1s(2),z2s(2),z3s(2),t-delt,4)&
-         - Ldynf131(zi1s(2),z2s(2),z3s(2),t-delt,5)
+    L131 = Ldynf131(zii1s(0),z2s(0),z3s(0),t,0)&
+         - Ldynf131(zi1s(0),z2s(0),z3s(0),t,1)&
+         + Ldynf131(zii1s(1),z2s(1),z3s(1),t,2)&
+         - Ldynf131(zi1s(1),z2s(1),z3s(1),t,3)&
+         + Ldynf131(zii1s(2),z2s(2),z3s(2),t,4)&
+         - Ldynf131(zi1s(2),z2s(2),z3s(2),t,5)
 
     L131 = L131t - L131
     Kdynf131 = L131
@@ -2460,19 +2460,19 @@ contains
     real(8),intent(in) :: t,delt
     real(8) :: L132,L132t
     
-    L132t = Ldynf132(zii1s(0),z2s(0),z3s(0),t,0)&
-          - Ldynf132(zi1s(0),z2s(0),z3s(0),t,1)&
-          + Ldynf132(zii1s(1),z2s(1),z3s(1),t,2)&
-          - Ldynf132(zi1s(1),z2s(1),z3s(1),t,3)&
-          + Ldynf132(zii1s(2),z2s(2),z3s(2),t,4)&
-          - Ldynf132(zi1s(2),z2s(2),z3s(2),t,5)
+    L132t = Ldynf132(zii1s(0),z2s(0),z3s(0),t+delt,0)&
+          - Ldynf132(zi1s(0),z2s(0),z3s(0),t+delt,1)&
+          + Ldynf132(zii1s(1),z2s(1),z3s(1),t+delt,2)&
+          - Ldynf132(zi1s(1),z2s(1),z3s(1),t+delt,3)&
+          + Ldynf132(zii1s(2),z2s(2),z3s(2),t+delt,4)&
+          - Ldynf132(zi1s(2),z2s(2),z3s(2),t+delt,5)
 
-    L132 = Ldynf132(zii1s(0),z2s(0),z3s(0),t-delt,0)&
-         - Ldynf132(zi1s(0),z2s(0),z3s(0),t-delt,1)&
-         + Ldynf132(zii1s(1),z2s(1),z3s(1),t-delt,2)&
-         - Ldynf132(zi1s(1),z2s(1),z3s(1),t-delt,3)&
-         + Ldynf132(zii1s(2),z2s(2),z3s(2),t-delt,4)&
-         - Ldynf132(zi1s(2),z2s(2),z3s(2),t-delt,5)
+    L132 = Ldynf132(zii1s(0),z2s(0),z3s(0),t,0)&
+         - Ldynf132(zi1s(0),z2s(0),z3s(0),t,1)&
+         + Ldynf132(zii1s(1),z2s(1),z3s(1),t,2)&
+         - Ldynf132(zi1s(1),z2s(1),z3s(1),t,3)&
+         + Ldynf132(zii1s(2),z2s(2),z3s(2),t,4)&
+         - Ldynf132(zi1s(2),z2s(2),z3s(2),t,5)
 
     L132 = L132t - L132
     Kdynf132 = L132
@@ -2483,19 +2483,19 @@ contains
     real(8),intent(in) :: t,delt
     real(8) :: L133,L133t
     
-    L133t = Ldynf133(zii1s(0),z2s(0),z3s(0),t,0)&
-          - Ldynf133(zi1s(0),z2s(0),z3s(0),t,1)&
-          + Ldynf133(zii1s(1),z2s(1),z3s(1),t,2)&
-          - Ldynf133(zi1s(1),z2s(1),z3s(1),t,3)&
-          + Ldynf133(zii1s(2),z2s(2),z3s(2),t,4)&
-          - Ldynf133(zi1s(2),z2s(2),z3s(2),t,5)
+    L133t = Ldynf133(zii1s(0),z2s(0),z3s(0),t+delt,0)&
+          - Ldynf133(zi1s(0),z2s(0),z3s(0),t+delt,1)&
+          + Ldynf133(zii1s(1),z2s(1),z3s(1),t+delt,2)&
+          - Ldynf133(zi1s(1),z2s(1),z3s(1),t+delt,3)&
+          + Ldynf133(zii1s(2),z2s(2),z3s(2),t+delt,4)&
+          - Ldynf133(zi1s(2),z2s(2),z3s(2),t+delt,5)
 
-    L133 = Ldynf133(zii1s(0),z2s(0),z3s(0),t-delt,0)&
-         - Ldynf133(zi1s(0),z2s(0),z3s(0),t-delt,1)&
-         + Ldynf133(zii1s(1),z2s(1),z3s(1),t-delt,2)&
-         - Ldynf133(zi1s(1),z2s(1),z3s(1),t-delt,3)&
-         + Ldynf133(zii1s(2),z2s(2),z3s(2),t-delt,4)&
-         - Ldynf133(zi1s(2),z2s(2),z3s(2),t-delt,5)
+    L133 = Ldynf133(zii1s(0),z2s(0),z3s(0),t,0)&
+         - Ldynf133(zi1s(0),z2s(0),z3s(0),t,1)&
+         + Ldynf133(zii1s(1),z2s(1),z3s(1),t,2)&
+         - Ldynf133(zi1s(1),z2s(1),z3s(1),t,3)&
+         + Ldynf133(zii1s(2),z2s(2),z3s(2),t,4)&
+         - Ldynf133(zi1s(2),z2s(2),z3s(2),t,5)
 
     L133 = L133t - L133
     Kdynf133 = L133
@@ -2506,19 +2506,19 @@ contains
     real(8),intent(in) :: t,delt
     real(8) :: L211,L211t
 
-    L211t = Ldynf211(zii1s(0),z2s(0),z3s(0),t,0)&
-          - Ldynf211(zi1s(0),z2s(0),z3s(0),t,1)&
-          + Ldynf211(zii1s(1),z2s(1),z3s(1),t,2)&
-          - Ldynf211(zi1s(1),z2s(1),z3s(1),t,3)&
-          + Ldynf211(zii1s(2),z2s(2),z3s(2),t,4)&
-          - Ldynf211(zi1s(2),z2s(2),z3s(2),t,5)
+    L211t = Ldynf211(zii1s(0),z2s(0),z3s(0),t+delt,0)&
+          - Ldynf211(zi1s(0),z2s(0),z3s(0),t+delt,1)&
+          + Ldynf211(zii1s(1),z2s(1),z3s(1),t+delt,2)&
+          - Ldynf211(zi1s(1),z2s(1),z3s(1),t+delt,3)&
+          + Ldynf211(zii1s(2),z2s(2),z3s(2),t+delt,4)&
+          - Ldynf211(zi1s(2),z2s(2),z3s(2),t+delt,5)
 
-    L211 = Ldynf211(zii1s(0),z2s(0),z3s(0),t-delt,0)&
-         - Ldynf211(zi1s(0),z2s(0),z3s(0),t-delt,1)&
-         + Ldynf211(zii1s(1),z2s(1),z3s(1),t-delt,2)&
-         - Ldynf211(zi1s(1),z2s(1),z3s(1),t-delt,3)&
-         + Ldynf211(zii1s(2),z2s(2),z3s(2),t-delt,4)&
-         - Ldynf211(zi1s(2),z2s(2),z3s(2),t-delt,5)
+    L211 = Ldynf211(zii1s(0),z2s(0),z3s(0),t,0)&
+         - Ldynf211(zi1s(0),z2s(0),z3s(0),t,1)&
+         + Ldynf211(zii1s(1),z2s(1),z3s(1),t,2)&
+         - Ldynf211(zi1s(1),z2s(1),z3s(1),t,3)&
+         + Ldynf211(zii1s(2),z2s(2),z3s(2),t,4)&
+         - Ldynf211(zi1s(2),z2s(2),z3s(2),t,5)
 
     L211 = L211t - L211
     Kdynf211 = L211
@@ -2529,19 +2529,19 @@ contains
     real(8),intent(in) :: t,delt
     real(8) :: L212,L212t
 
-    L212t = Ldynf212(zii1s(0),z2s(0),z3s(0),t,0)&
-          - Ldynf212(zi1s(0),z2s(0),z3s(0),t,1)&
-          + Ldynf212(zii1s(1),z2s(1),z3s(1),t,2)&
-          - Ldynf212(zi1s(1),z2s(1),z3s(1),t,3)&
-          + Ldynf212(zii1s(2),z2s(2),z3s(2),t,4)&
-          - Ldynf212(zi1s(2),z2s(2),z3s(2),t,5)
+    L212t = Ldynf212(zii1s(0),z2s(0),z3s(0),t+delt,0)&
+          - Ldynf212(zi1s(0),z2s(0),z3s(0),t+delt,1)&
+          + Ldynf212(zii1s(1),z2s(1),z3s(1),t+delt,2)&
+          - Ldynf212(zi1s(1),z2s(1),z3s(1),t+delt,3)&
+          + Ldynf212(zii1s(2),z2s(2),z3s(2),t+delt,4)&
+          - Ldynf212(zi1s(2),z2s(2),z3s(2),t+delt,5)
 
-    L212 = Ldynf212(zii1s(0),z2s(0),z3s(0),t-delt,0)&
-         - Ldynf212(zi1s(0),z2s(0),z3s(0),t-delt,1)&
-         + Ldynf212(zii1s(1),z2s(1),z3s(1),t-delt,2)&
-         - Ldynf212(zi1s(1),z2s(1),z3s(1),t-delt,3)&
-         + Ldynf212(zii1s(2),z2s(2),z3s(2),t-delt,4)&
-         - Ldynf212(zi1s(2),z2s(2),z3s(2),t-delt,5)
+    L212 = Ldynf212(zii1s(0),z2s(0),z3s(0),t,0)&
+         - Ldynf212(zi1s(0),z2s(0),z3s(0),t,1)&
+         + Ldynf212(zii1s(1),z2s(1),z3s(1),t,2)&
+         - Ldynf212(zi1s(1),z2s(1),z3s(1),t,3)&
+         + Ldynf212(zii1s(2),z2s(2),z3s(2),t,4)&
+         - Ldynf212(zi1s(2),z2s(2),z3s(2),t,5)
 
     L212 = L212t - L212
     Kdynf212 = L212
@@ -2552,19 +2552,19 @@ contains
     real(8),intent(in) :: t,delt
     real(8) :: L213,L213t
 
-    L213t = Ldynf213(zii1s(0),z2s(0),z3s(0),t,0)&
-          - Ldynf213(zi1s(0),z2s(0),z3s(0),t,1)&
-          + Ldynf213(zii1s(1),z2s(1),z3s(1),t,2)&
-          - Ldynf213(zi1s(1),z2s(1),z3s(1),t,3)&
-          + Ldynf213(zii1s(2),z2s(2),z3s(2),t,4)&
-          - Ldynf213(zi1s(2),z2s(2),z3s(2),t,5)
+    L213t = Ldynf213(zii1s(0),z2s(0),z3s(0),t+delt,0)&
+          - Ldynf213(zi1s(0),z2s(0),z3s(0),t+delt,1)&
+          + Ldynf213(zii1s(1),z2s(1),z3s(1),t+delt,2)&
+          - Ldynf213(zi1s(1),z2s(1),z3s(1),t+delt,3)&
+          + Ldynf213(zii1s(2),z2s(2),z3s(2),t+delt,4)&
+          - Ldynf213(zi1s(2),z2s(2),z3s(2),t+delt,5)
 
-    L213 = Ldynf213(zii1s(0),z2s(0),z3s(0),t-delt,0)&
-         - Ldynf213(zi1s(0),z2s(0),z3s(0),t-delt,1)&
-         + Ldynf213(zii1s(1),z2s(1),z3s(1),t-delt,2)&
-         - Ldynf213(zi1s(1),z2s(1),z3s(1),t-delt,3)&
-         + Ldynf213(zii1s(2),z2s(2),z3s(2),t-delt,4)&
-         - Ldynf213(zi1s(2),z2s(2),z3s(2),t-delt,5)
+    L213 = Ldynf213(zii1s(0),z2s(0),z3s(0),t,0)&
+         - Ldynf213(zi1s(0),z2s(0),z3s(0),t,1)&
+         + Ldynf213(zii1s(1),z2s(1),z3s(1),t,2)&
+         - Ldynf213(zi1s(1),z2s(1),z3s(1),t,3)&
+         + Ldynf213(zii1s(2),z2s(2),z3s(2),t,4)&
+         - Ldynf213(zi1s(2),z2s(2),z3s(2),t,5)
 
     L213 = L213t - L213
     Kdynf213 = L213
@@ -2575,19 +2575,19 @@ contains
     real(8),intent(in) :: t,delt
     real(8) :: L221,L221t
 
-    L221t = Ldynf221(zii1s(0),z2s(0),z3s(0),t,0)&
-          - Ldynf221(zi1s(0),z2s(0),z3s(0),t,1)&
-          + Ldynf221(zii1s(1),z2s(1),z3s(1),t,2)&
-          - Ldynf221(zi1s(1),z2s(1),z3s(1),t,3)&
-          + Ldynf221(zii1s(2),z2s(2),z3s(2),t,4)&
-          - Ldynf221(zi1s(2),z2s(2),z3s(2),t,5)
+    L221t = Ldynf221(zii1s(0),z2s(0),z3s(0),t+delt,0)&
+          - Ldynf221(zi1s(0),z2s(0),z3s(0),t+delt,1)&
+          + Ldynf221(zii1s(1),z2s(1),z3s(1),t+delt,2)&
+          - Ldynf221(zi1s(1),z2s(1),z3s(1),t+delt,3)&
+          + Ldynf221(zii1s(2),z2s(2),z3s(2),t+delt,4)&
+          - Ldynf221(zi1s(2),z2s(2),z3s(2),t+delt,5)
 
-    L221 = Ldynf221(zii1s(0),z2s(0),z3s(0),t-delt,0)&
-         - Ldynf221(zi1s(0),z2s(0),z3s(0),t-delt,1)&
-         + Ldynf221(zii1s(1),z2s(1),z3s(1),t-delt,2)&
-         - Ldynf221(zi1s(1),z2s(1),z3s(1),t-delt,3)&
-         + Ldynf221(zii1s(2),z2s(2),z3s(2),t-delt,4)&
-         - Ldynf221(zi1s(2),z2s(2),z3s(2),t-delt,5)
+    L221 = Ldynf221(zii1s(0),z2s(0),z3s(0),t,0)&
+         - Ldynf221(zi1s(0),z2s(0),z3s(0),t,1)&
+         + Ldynf221(zii1s(1),z2s(1),z3s(1),t,2)&
+         - Ldynf221(zi1s(1),z2s(1),z3s(1),t,3)&
+         + Ldynf221(zii1s(2),z2s(2),z3s(2),t,4)&
+         - Ldynf221(zi1s(2),z2s(2),z3s(2),t,5)
 
     L221 = L221t - L221
     Kdynf221 = L221
@@ -2598,19 +2598,19 @@ contains
     real(8),intent(in) :: t,delt
     real(8) :: L222,L222t
 
-    L222t = Ldynf222(zii1s(0),z2s(0),z3s(0),t,0)&
-          - Ldynf222(zi1s(0),z2s(0),z3s(0),t,1)&
-          + Ldynf222(zii1s(1),z2s(1),z3s(1),t,2)&
-          - Ldynf222(zi1s(1),z2s(1),z3s(1),t,3)&
-          + Ldynf222(zii1s(2),z2s(2),z3s(2),t,4)&
-          - Ldynf222(zi1s(2),z2s(2),z3s(2),t,5)
+    L222t = Ldynf222(zii1s(0),z2s(0),z3s(0),t+delt,0)&
+          - Ldynf222(zi1s(0),z2s(0),z3s(0),t+delt,1)&
+          + Ldynf222(zii1s(1),z2s(1),z3s(1),t+delt,2)&
+          - Ldynf222(zi1s(1),z2s(1),z3s(1),t+delt,3)&
+          + Ldynf222(zii1s(2),z2s(2),z3s(2),t+delt,4)&
+          - Ldynf222(zi1s(2),z2s(2),z3s(2),t+delt,5)
       
-    L222 = Ldynf222(zii1s(0),z2s(0),z3s(0),t-delt,0)&
-         - Ldynf222(zi1s(0),z2s(0),z3s(0),t-delt,1)&
-         + Ldynf222(zii1s(1),z2s(1),z3s(1),t-delt,2)&
-         - Ldynf222(zi1s(1),z2s(1),z3s(1),t-delt,3)&
-         + Ldynf222(zii1s(2),z2s(2),z3s(2),t-delt,4)&
-         - Ldynf222(zi1s(2),z2s(2),z3s(2),t-delt,5)
+    L222 = Ldynf222(zii1s(0),z2s(0),z3s(0),t,0)&
+         - Ldynf222(zi1s(0),z2s(0),z3s(0),t,1)&
+         + Ldynf222(zii1s(1),z2s(1),z3s(1),t,2)&
+         - Ldynf222(zi1s(1),z2s(1),z3s(1),t,3)&
+         + Ldynf222(zii1s(2),z2s(2),z3s(2),t,4)&
+         - Ldynf222(zi1s(2),z2s(2),z3s(2),t,5)
 
     L222 = L222t - L222
     Kdynf222 = L222
@@ -2621,6 +2621,14 @@ contains
     real(8),intent(in) :: t,delt
     real(8) :: L223,L223t
 
+    L223 = Ldynf223(zii1s(0),z2s(0),z3s(0),t+delt,0)&
+         - Ldynf223(zi1s(0),z2s(0),z3s(0),t+delt,1)&
+         + Ldynf223(zii1s(1),z2s(1),z3s(1),t+delt,2)&
+         - Ldynf223(zi1s(1),z2s(1),z3s(1),t+delt,3)&
+         + Ldynf223(zii1s(2),z2s(2),z3s(2),t+delt,4)&
+         - Ldynf223(zi1s(2),z2s(2),z3s(2),t+delt,5)&
+         + Caa3*Hevix( z2s(0) )*Hevix( z2s(1) )*Hevix( z2s(2) )*Heviw( t+delt-abs(z3s(0))/Cl )
+
     L223 = Ldynf223(zii1s(0),z2s(0),z3s(0),t,0)&
          - Ldynf223(zi1s(0),z2s(0),z3s(0),t,1)&
          + Ldynf223(zii1s(1),z2s(1),z3s(1),t,2)&
@@ -2628,14 +2636,6 @@ contains
          + Ldynf223(zii1s(2),z2s(2),z3s(2),t,4)&
          - Ldynf223(zi1s(2),z2s(2),z3s(2),t,5)&
          + Caa3*Hevix( z2s(0) )*Hevix( z2s(1) )*Hevix( z2s(2) )*Heviw( t-abs(z3s(0))/Cl )
-
-    L223 = Ldynf223(zii1s(0),z2s(0),z3s(0),t-delt,0)&
-         - Ldynf223(zi1s(0),z2s(0),z3s(0),t-delt,1)&
-         + Ldynf223(zii1s(1),z2s(1),z3s(1),t-delt,2)&
-         - Ldynf223(zi1s(1),z2s(1),z3s(1),t-delt,3)&
-         + Ldynf223(zii1s(2),z2s(2),z3s(2),t-delt,4)&
-         - Ldynf223(zi1s(2),z2s(2),z3s(2),t-delt,5)&
-         + Caa3*Hevix( z2s(0) )*Hevix( z2s(1) )*Hevix( z2s(2) )*Heviw( t-delt-abs(z3s(0))/Cl )
 
     L223 = L223t - L223
     Kdynf223 = L223
@@ -2646,19 +2646,19 @@ contains
     real(8),intent(in) :: t,delt
     real(8) :: L231,L231t
 
-    L231t = Ldynf231(zii1s(0),z2s(0),z3s(0),t,0)&
-          - Ldynf231(zi1s(0),z2s(0),z3s(0),t,1)&
-          + Ldynf231(zii1s(1),z2s(1),z3s(1),t,2)&
-          - Ldynf231(zi1s(1),z2s(1),z3s(1),t,3)&
-          + Ldynf231(zii1s(2),z2s(2),z3s(2),t,4)&
-          - Ldynf231(zi1s(2),z2s(2),z3s(2),t,5)
+    L231t = Ldynf231(zii1s(0),z2s(0),z3s(0),t+delt,0)&
+          - Ldynf231(zi1s(0),z2s(0),z3s(0),t+delt,1)&
+          + Ldynf231(zii1s(1),z2s(1),z3s(1),t+delt,2)&
+          - Ldynf231(zi1s(1),z2s(1),z3s(1),t+delt,3)&
+          + Ldynf231(zii1s(2),z2s(2),z3s(2),t+delt,4)&
+          - Ldynf231(zi1s(2),z2s(2),z3s(2),t+delt,5)
 
-    L231 = Ldynf231(zii1s(0),z2s(0),z3s(0),t-delt,0)&
-         - Ldynf231(zi1s(0),z2s(0),z3s(0),t-delt,1)&
-         + Ldynf231(zii1s(1),z2s(1),z3s(1),t-delt,2)&
-         - Ldynf231(zi1s(1),z2s(1),z3s(1),t-delt,3)&
-         + Ldynf231(zii1s(2),z2s(2),z3s(2),t-delt,4)&
-         - Ldynf231(zi1s(2),z2s(2),z3s(2),t-delt,5)
+    L231 = Ldynf231(zii1s(0),z2s(0),z3s(0),t,0)&
+         - Ldynf231(zi1s(0),z2s(0),z3s(0),t,1)&
+         + Ldynf231(zii1s(1),z2s(1),z3s(1),t,2)&
+         - Ldynf231(zi1s(1),z2s(1),z3s(1),t,3)&
+         + Ldynf231(zii1s(2),z2s(2),z3s(2),t,4)&
+         - Ldynf231(zi1s(2),z2s(2),z3s(2),t,5)
 
     L231 = L231t - L231
     Kdynf231 = L231
@@ -2669,19 +2669,19 @@ contains
     real(8),intent(in) :: t,delt
     real(8) :: L232,L232t
 
-    L232t = Ldynf232(zii1s(0),z2s(0),z3s(0),t,0)&
-          - Ldynf232(zi1s(0),z2s(0),z3s(0),t,1)&
-          + Ldynf232(zii1s(1),z2s(1),z3s(1),t,2)&
-          - Ldynf232(zi1s(1),z2s(1),z3s(1),t,3)&
-          + Ldynf232(zii1s(2),z2s(2),z3s(2),t,4)&
-          - Ldynf232(zi1s(2),z2s(2),z3s(2),t,5)
+    L232t = Ldynf232(zii1s(0),z2s(0),z3s(0),t+delt,0)&
+          - Ldynf232(zi1s(0),z2s(0),z3s(0),t+delt,1)&
+          + Ldynf232(zii1s(1),z2s(1),z3s(1),t+delt,2)&
+          - Ldynf232(zi1s(1),z2s(1),z3s(1),t+delt,3)&
+          + Ldynf232(zii1s(2),z2s(2),z3s(2),t+delt,4)&
+          - Ldynf232(zi1s(2),z2s(2),z3s(2),t+delt,5)
 
-    L232 = Ldynf232(zii1s(0),z2s(0),z3s(0),t-delt,0)&
-         - Ldynf232(zi1s(0),z2s(0),z3s(0),t-delt,1)&
-         + Ldynf232(zii1s(1),z2s(1),z3s(1),t-delt,2)&
-         - Ldynf232(zi1s(1),z2s(1),z3s(1),t-delt,3)&
-         + Ldynf232(zii1s(2),z2s(2),z3s(2),t-delt,4)&
-         - Ldynf232(zi1s(2),z2s(2),z3s(2),t-delt,5)
+    L232 = Ldynf232(zii1s(0),z2s(0),z3s(0),t,0)&
+         - Ldynf232(zi1s(0),z2s(0),z3s(0),t,1)&
+         + Ldynf232(zii1s(1),z2s(1),z3s(1),t,2)&
+         - Ldynf232(zi1s(1),z2s(1),z3s(1),t,3)&
+         + Ldynf232(zii1s(2),z2s(2),z3s(2),t,4)&
+         - Ldynf232(zi1s(2),z2s(2),z3s(2),t,5)
 
     L232 = L232t - L232
     Kdynf232 = L232
@@ -2692,19 +2692,19 @@ contains
     real(8),intent(in) :: t,delt
     real(8) :: L233,L233t
 
-    L233t = Ldynf233(zii1s(0),z2s(0),z3s(0),t,0)&
-          - Ldynf233(zi1s(0),z2s(0),z3s(0),t,1)&
-          + Ldynf233(zii1s(1),z2s(1),z3s(1),t,2)&
-          - Ldynf233(zi1s(1),z2s(1),z3s(1),t,3)&
-          + Ldynf233(zii1s(2),z2s(2),z3s(2),t,4)&
-          - Ldynf233(zi1s(2),z2s(2),z3s(2),t,5)
+    L233t = Ldynf233(zii1s(0),z2s(0),z3s(0),t+delt,0)&
+          - Ldynf233(zi1s(0),z2s(0),z3s(0),t+delt,1)&
+          + Ldynf233(zii1s(1),z2s(1),z3s(1),t+delt,2)&
+          - Ldynf233(zi1s(1),z2s(1),z3s(1),t+delt,3)&
+          + Ldynf233(zii1s(2),z2s(2),z3s(2),t+delt,4)&
+          - Ldynf233(zi1s(2),z2s(2),z3s(2),t+delt,5)
 
-    L233 = Ldynf233(zii1s(0),z2s(0),z3s(0),t-delt,0)&
-         - Ldynf233(zi1s(0),z2s(0),z3s(0),t-delt,1)&
-         + Ldynf233(zii1s(1),z2s(1),z3s(1),t-delt,2)&
-         - Ldynf233(zi1s(1),z2s(1),z3s(1),t-delt,3)&
-         + Ldynf233(zii1s(2),z2s(2),z3s(2),t-delt,4)&
-         - Ldynf233(zi1s(2),z2s(2),z3s(2),t-delt,5)
+    L233 = Ldynf233(zii1s(0),z2s(0),z3s(0),t,0)&
+         - Ldynf233(zi1s(0),z2s(0),z3s(0),t,1)&
+         + Ldynf233(zii1s(1),z2s(1),z3s(1),t,2)&
+         - Ldynf233(zi1s(1),z2s(1),z3s(1),t,3)&
+         + Ldynf233(zii1s(2),z2s(2),z3s(2),t,4)&
+         - Ldynf233(zi1s(2),z2s(2),z3s(2),t,5)
 
     L233 = L233t - L233
     Kdynf233 = L233
@@ -2715,21 +2715,21 @@ contains
     real(8),intent(in) :: t,delt
     real(8) :: L311,L311t
 
-    L311t = Ldynf311(zii1s(0),z2s(0),z3s(0),t,0)&
-          - Ldynf311(zi1s(0),z2s(0),z3s(0),t,1)&
-          + Ldynf311(zii1s(1),z2s(1),z3s(1),t,2)&
-          - Ldynf311(zi1s(1),z2s(1),z3s(1),t,3)&
-          + Ldynf311(zii1s(2),z2s(2),z3s(2),t,4)&
-          - Ldynf311(zi1s(2),z2s(2),z3s(2),t,5)&
-          + Hevix( z2s(0) )*Hevix( z2s(1) )*Hevix( z2s(2) )*Heviw( t-abs(z3s(0))/Ct )
+    L311t = Ldynf311(zii1s(0),z2s(0),z3s(0),t+delt,0)&
+          - Ldynf311(zi1s(0),z2s(0),z3s(0),t+delt,1)&
+          + Ldynf311(zii1s(1),z2s(1),z3s(1),t+delt,2)&
+          - Ldynf311(zi1s(1),z2s(1),z3s(1),t+delt,3)&
+          + Ldynf311(zii1s(2),z2s(2),z3s(2),t+delt,4)&
+          - Ldynf311(zi1s(2),z2s(2),z3s(2),t+delt,5)&
+          + Hevix( z2s(0) )*Hevix( z2s(1) )*Hevix( z2s(2) )*Heviw( t+delt-abs(z3s(0))/Ct )
 
-    L311 = Ldynf311(zii1s(0),z2s(0),z3s(0),t-delt,0)&
-         - Ldynf311(zi1s(0),z2s(0),z3s(0),t-delt,1)&
-         + Ldynf311(zii1s(1),z2s(1),z3s(1),t-delt,2)&
-         - Ldynf311(zi1s(1),z2s(1),z3s(1),t-delt,3)&
-         + Ldynf311(zii1s(2),z2s(2),z3s(2),t-delt,4)&
-         - Ldynf311(zi1s(2),z2s(2),z3s(2),t-delt,5)&
-         + Hevix( z2s(0) )*Hevix( z2s(1) )*Hevix( z2s(2) )*Heviw( t-delt-abs(z3s(0))/Ct )
+    L311 = Ldynf311(zii1s(0),z2s(0),z3s(0),t,0)&
+         - Ldynf311(zi1s(0),z2s(0),z3s(0),t,1)&
+         + Ldynf311(zii1s(1),z2s(1),z3s(1),t,2)&
+         - Ldynf311(zi1s(1),z2s(1),z3s(1),t,3)&
+         + Ldynf311(zii1s(2),z2s(2),z3s(2),t,4)&
+         - Ldynf311(zi1s(2),z2s(2),z3s(2),t,5)&
+         + Hevix( z2s(0) )*Hevix( z2s(1) )*Hevix( z2s(2) )*Heviw( t-abs(z3s(0))/Ct )
 
     L311 = L311t - L311
     Kdynf311 = L311
@@ -2740,19 +2740,19 @@ contains
     real(8),intent(in) :: t,delt
     real(8) :: L312,L312t
 
-    L312t = Ldynf312(zii1s(0),z2s(0),z3s(0),t,0)&
-          - Ldynf312(zi1s(0),z2s(0),z3s(0),t,1)&
-          + Ldynf312(zii1s(1),z2s(1),z3s(1),t,2)&
-          - Ldynf312(zi1s(1),z2s(1),z3s(1),t,3)&
-          + Ldynf312(zii1s(2),z2s(2),z3s(2),t,4)&
-          - Ldynf312(zi1s(2),z2s(2),z3s(2),t,5)
+    L312t = Ldynf312(zii1s(0),z2s(0),z3s(0),t+delt,0)&
+          - Ldynf312(zi1s(0),z2s(0),z3s(0),t+delt,1)&
+          + Ldynf312(zii1s(1),z2s(1),z3s(1),t+delt,2)&
+          - Ldynf312(zi1s(1),z2s(1),z3s(1),t+delt,3)&
+          + Ldynf312(zii1s(2),z2s(2),z3s(2),t+delt,4)&
+          - Ldynf312(zi1s(2),z2s(2),z3s(2),t+delt,5)
     
-    L312 = Ldynf312(zii1s(0),z2s(0),z3s(0),t-delt,0)&
-         - Ldynf312(zi1s(0),z2s(0),z3s(0),t-delt,1)&
-         + Ldynf312(zii1s(1),z2s(1),z3s(1),t-delt,2)&
-         - Ldynf312(zi1s(1),z2s(1),z3s(1),t-delt,3)&
-         + Ldynf312(zii1s(2),z2s(2),z3s(2),t-delt,4)&
-         - Ldynf312(zi1s(2),z2s(2),z3s(2),t-delt,5)
+    L312 = Ldynf312(zii1s(0),z2s(0),z3s(0),t,0)&
+         - Ldynf312(zi1s(0),z2s(0),z3s(0),t,1)&
+         + Ldynf312(zii1s(1),z2s(1),z3s(1),t,2)&
+         - Ldynf312(zi1s(1),z2s(1),z3s(1),t,3)&
+         + Ldynf312(zii1s(2),z2s(2),z3s(2),t,4)&
+         - Ldynf312(zi1s(2),z2s(2),z3s(2),t,5)
 
     L312 = L312t - L312
     Kdynf312 = L312
@@ -2763,19 +2763,19 @@ contains
     real(8),intent(in) :: t,delt
     real(8) :: L313,L313t
 
-    L313t = Ldynf313(zii1s(0),z2s(0),z3s(0),t,0)&
-          - Ldynf313(zi1s(0),z2s(0),z3s(0),t,1)&
-          + Ldynf313(zii1s(1),z2s(1),z3s(1),t,2)&
-          - Ldynf313(zi1s(1),z2s(1),z3s(1),t,3)&
-          + Ldynf313(zii1s(2),z2s(2),z3s(2),t,4)&
-          - Ldynf313(zi1s(2),z2s(2),z3s(2),t,5)
+    L313t = Ldynf313(zii1s(0),z2s(0),z3s(0),t+delt,0)&
+          - Ldynf313(zi1s(0),z2s(0),z3s(0),t+delt,1)&
+          + Ldynf313(zii1s(1),z2s(1),z3s(1),t+delt,2)&
+          - Ldynf313(zi1s(1),z2s(1),z3s(1),t+delt,3)&
+          + Ldynf313(zii1s(2),z2s(2),z3s(2),t+delt,4)&
+          - Ldynf313(zi1s(2),z2s(2),z3s(2),t+delt,5)
 
-    L313 = Ldynf313(zii1s(0),z2s(0),z3s(0),t-delt,0)&
-         - Ldynf313(zi1s(0),z2s(0),z3s(0),t-delt,1)&
-         + Ldynf313(zii1s(1),z2s(1),z3s(1),t-delt,2)&
-         - Ldynf313(zi1s(1),z2s(1),z3s(1),t-delt,3)&
-         + Ldynf313(zii1s(2),z2s(2),z3s(2),t-delt,4)&
-         - Ldynf313(zi1s(2),z2s(2),z3s(2),t-delt,5)
+    L313 = Ldynf313(zii1s(0),z2s(0),z3s(0),t,0)&
+         - Ldynf313(zi1s(0),z2s(0),z3s(0),t,1)&
+         + Ldynf313(zii1s(1),z2s(1),z3s(1),t,2)&
+         - Ldynf313(zi1s(1),z2s(1),z3s(1),t,3)&
+         + Ldynf313(zii1s(2),z2s(2),z3s(2),t,4)&
+         - Ldynf313(zi1s(2),z2s(2),z3s(2),t,5)
 
     L313 = L313t - L313
     Kdynf313 = L313
@@ -2786,19 +2786,19 @@ contains
     real(8),intent(in) :: t,delt
     real(8) :: L321,L321t
 
-    L321t = Ldynf321(zii1s(0),z2s(0),z3s(0),t,0)&
-          - Ldynf321(zi1s(0),z2s(0),z3s(0),t,1)&
-          + Ldynf321(zii1s(1),z2s(1),z3s(1),t,2)&
-          - Ldynf321(zi1s(1),z2s(1),z3s(1),t,3)&
-          + Ldynf321(zii1s(2),z2s(2),z3s(2),t,4)&
-          - Ldynf321(zi1s(2),z2s(2),z3s(2),t,5)
+    L321t = Ldynf321(zii1s(0),z2s(0),z3s(0),t+delt,0)&
+          - Ldynf321(zi1s(0),z2s(0),z3s(0),t+delt,1)&
+          + Ldynf321(zii1s(1),z2s(1),z3s(1),t+delt,2)&
+          - Ldynf321(zi1s(1),z2s(1),z3s(1),t+delt,3)&
+          + Ldynf321(zii1s(2),z2s(2),z3s(2),t+delt,4)&
+          - Ldynf321(zi1s(2),z2s(2),z3s(2),t+delt,5)
 
-    L321 = Ldynf321(zii1s(0),z2s(0),z3s(0),t-delt,0)&
-         - Ldynf321(zi1s(0),z2s(0),z3s(0),t-delt,1)&
-         + Ldynf321(zii1s(1),z2s(1),z3s(1),t-delt,2)&
-         - Ldynf321(zi1s(1),z2s(1),z3s(1),t-delt,3)&
-         + Ldynf321(zii1s(2),z2s(2),z3s(2),t-delt,4)&
-         - Ldynf321(zi1s(2),z2s(2),z3s(2),t-delt,5)
+    L321 = Ldynf321(zii1s(0),z2s(0),z3s(0),t,0)&
+         - Ldynf321(zi1s(0),z2s(0),z3s(0),t,1)&
+         + Ldynf321(zii1s(1),z2s(1),z3s(1),t,2)&
+         - Ldynf321(zi1s(1),z2s(1),z3s(1),t,3)&
+         + Ldynf321(zii1s(2),z2s(2),z3s(2),t,4)&
+         - Ldynf321(zi1s(2),z2s(2),z3s(2),t,5)
     
     L321 = L321t - L321
     Kdynf321 = L321
@@ -2809,6 +2809,14 @@ contains
     real(8),intent(in) :: t,delt
     real(8) :: L322,L322t
 
+    L322 = Ldynf322(zii1s(0),z2s(0),z3s(0),t+delt,0)&
+         - Ldynf322(zi1s(0),z2s(0),z3s(0),t+delt,1)&
+         + Ldynf322(zii1s(1),z2s(1),z3s(1),t+delt,2)&
+         - Ldynf322(zi1s(1),z2s(1),z3s(1),t+delt,3)&
+         + Ldynf322(zii1s(2),z2s(2),z3s(2),t+delt,4)&
+         - Ldynf322(zi1s(2),z2s(2),z3s(2),t+delt,5)&
+         + Hevix( z2s(0) )*Hevix( z2s(1) )*Hevix( z2s(2) )*Heviw( t+delt-abs(z3s(0))/Ct )
+
     L322 = Ldynf322(zii1s(0),z2s(0),z3s(0),t,0)&
          - Ldynf322(zi1s(0),z2s(0),z3s(0),t,1)&
          + Ldynf322(zii1s(1),z2s(1),z3s(1),t,2)&
@@ -2816,14 +2824,6 @@ contains
          + Ldynf322(zii1s(2),z2s(2),z3s(2),t,4)&
          - Ldynf322(zi1s(2),z2s(2),z3s(2),t,5)&
          + Hevix( z2s(0) )*Hevix( z2s(1) )*Hevix( z2s(2) )*Heviw( t-abs(z3s(0))/Ct )
-
-    L322 = Ldynf322(zii1s(0),z2s(0),z3s(0),t-delt,0)&
-         - Ldynf322(zi1s(0),z2s(0),z3s(0),t-delt,1)&
-         + Ldynf322(zii1s(1),z2s(1),z3s(1),t-delt,2)&
-         - Ldynf322(zi1s(1),z2s(1),z3s(1),t-delt,3)&
-         + Ldynf322(zii1s(2),z2s(2),z3s(2),t-delt,4)&
-         - Ldynf322(zi1s(2),z2s(2),z3s(2),t-delt,5)&
-         + Hevix( z2s(0) )*Hevix( z2s(1) )*Hevix( z2s(2) )*Heviw( t-delt-abs(z3s(0))/Ct )
     
     L322 = L322t - L322
     Kdynf322 = L322
@@ -2834,19 +2834,19 @@ contains
     real(8),intent(in) :: t,delt
     real(8) :: L323,L323t
     
-    L323t = Ldynf323(zii1s(0),z2s(0),z3s(0),t,0)&
-          - Ldynf323(zi1s(0),z2s(0),z3s(0),t,1)&
-          + Ldynf323(zii1s(1),z2s(1),z3s(1),t,2)&
-          - Ldynf323(zi1s(1),z2s(1),z3s(1),t,3)&
-          + Ldynf323(zii1s(2),z2s(2),z3s(2),t,4)&
-          - Ldynf323(zi1s(2),z2s(2),z3s(2),t,5)
+    L323t = Ldynf323(zii1s(0),z2s(0),z3s(0),t+delt,0)&
+          - Ldynf323(zi1s(0),z2s(0),z3s(0),t+delt,1)&
+          + Ldynf323(zii1s(1),z2s(1),z3s(1),t+delt,2)&
+          - Ldynf323(zi1s(1),z2s(1),z3s(1),t+delt,3)&
+          + Ldynf323(zii1s(2),z2s(2),z3s(2),t+delt,4)&
+          - Ldynf323(zi1s(2),z2s(2),z3s(2),t+delt,5)
 
-    L323 = Ldynf323(zii1s(0),z2s(0),z3s(0),t-delt,0)&
-         - Ldynf323(zi1s(0),z2s(0),z3s(0),t-delt,1)&
-         + Ldynf323(zii1s(1),z2s(1),z3s(1),t-delt,2)&
-         - Ldynf323(zi1s(1),z2s(1),z3s(1),t-delt,3)&
-         + Ldynf323(zii1s(2),z2s(2),z3s(2),t-delt,4)&
-         - Ldynf323(zi1s(2),z2s(2),z3s(2),t-delt,5)
+    L323 = Ldynf323(zii1s(0),z2s(0),z3s(0),t,0)&
+         - Ldynf323(zi1s(0),z2s(0),z3s(0),t,1)&
+         + Ldynf323(zii1s(1),z2s(1),z3s(1),t,2)&
+         - Ldynf323(zi1s(1),z2s(1),z3s(1),t,3)&
+         + Ldynf323(zii1s(2),z2s(2),z3s(2),t,4)&
+         - Ldynf323(zi1s(2),z2s(2),z3s(2),t,5)
 
     L323 = L323t - L323
     Kdynf323 = L323
@@ -2857,19 +2857,19 @@ contains
     real(8),intent(in) :: t,delt
     real(8) :: L331,L331t
 
-    L331t = Ldynf331(zii1s(0),z2s(0),z3s(0),t,0)&
-          - Ldynf331(zi1s(0),z2s(0),z3s(0),t,1)&
-          + Ldynf331(zii1s(1),z2s(1),z3s(1),t,2)&
-          - Ldynf331(zi1s(1),z2s(1),z3s(1),t,3)&
-          + Ldynf331(zii1s(2),z2s(2),z3s(2),t,4)&
-          - Ldynf331(zi1s(2),z2s(2),z3s(2),t,5)
+    L331t = Ldynf331(zii1s(0),z2s(0),z3s(0),t+delt,0)&
+          - Ldynf331(zi1s(0),z2s(0),z3s(0),t+delt,1)&
+          + Ldynf331(zii1s(1),z2s(1),z3s(1),t+delt,2)&
+          - Ldynf331(zi1s(1),z2s(1),z3s(1),t+delt,3)&
+          + Ldynf331(zii1s(2),z2s(2),z3s(2),t+delt,4)&
+          - Ldynf331(zi1s(2),z2s(2),z3s(2),t+delt,5)
 
-    L331 = Ldynf331(zii1s(0),z2s(0),z3s(0),t-delt,0)&
-         - Ldynf331(zi1s(0),z2s(0),z3s(0),t-delt,1)&
-         + Ldynf331(zii1s(1),z2s(1),z3s(1),t-delt,2)&
-         - Ldynf331(zi1s(1),z2s(1),z3s(1),t-delt,3)&
-         + Ldynf331(zii1s(2),z2s(2),z3s(2),t-delt,4)&
-         - Ldynf331(zi1s(2),z2s(2),z3s(2),t-delt,5)
+    L331 = Ldynf331(zii1s(0),z2s(0),z3s(0),t,0)&
+         - Ldynf331(zi1s(0),z2s(0),z3s(0),t,1)&
+         + Ldynf331(zii1s(1),z2s(1),z3s(1),t,2)&
+         - Ldynf331(zi1s(1),z2s(1),z3s(1),t,3)&
+         + Ldynf331(zii1s(2),z2s(2),z3s(2),t,4)&
+         - Ldynf331(zi1s(2),z2s(2),z3s(2),t,5)
 
     L331 = L331t - L331
     Kdynf331 = L331
@@ -2880,19 +2880,19 @@ contains
     real(8),intent(in) :: t,delt
     real(8) :: L332,L332t
 
-    L332t = Ldynf332(zii1s(0),z2s(0),z3s(0),t,0)&
-          - Ldynf332(zi1s(0),z2s(0),z3s(0),t,1)&
-          + Ldynf332(zii1s(1),z2s(1),z3s(1),t,2)&
-          - Ldynf332(zi1s(1),z2s(1),z3s(1),t,3)&
-          + Ldynf332(zii1s(2),z2s(2),z3s(2),t,4)&
-          - Ldynf332(zi1s(2),z2s(2),z3s(2),t,5)
+    L332t = Ldynf332(zii1s(0),z2s(0),z3s(0),t+delt,0)&
+          - Ldynf332(zi1s(0),z2s(0),z3s(0),t+delt,1)&
+          + Ldynf332(zii1s(1),z2s(1),z3s(1),t+delt,2)&
+          - Ldynf332(zi1s(1),z2s(1),z3s(1),t+delt,3)&
+          + Ldynf332(zii1s(2),z2s(2),z3s(2),t+delt,4)&
+          - Ldynf332(zi1s(2),z2s(2),z3s(2),t+delt,5)
 
-    L332 = Ldynf332(zii1s(0),z2s(0),z3s(0),t-delt,0)&
-         - Ldynf332(zi1s(0),z2s(0),z3s(0),t-delt,1)&
-         + Ldynf332(zii1s(1),z2s(1),z3s(1),t-delt,2)&
-         - Ldynf332(zi1s(1),z2s(1),z3s(1),t-delt,3)&
-         + Ldynf332(zii1s(2),z2s(2),z3s(2),t-delt,4)&
-         - Ldynf332(zi1s(2),z2s(2),z3s(2),t-delt,5)
+    L332 = Ldynf332(zii1s(0),z2s(0),z3s(0),t,0)&
+         - Ldynf332(zi1s(0),z2s(0),z3s(0),t,1)&
+         + Ldynf332(zii1s(1),z2s(1),z3s(1),t,2)&
+         - Ldynf332(zi1s(1),z2s(1),z3s(1),t,3)&
+         + Ldynf332(zii1s(2),z2s(2),z3s(2),t,4)&
+         - Ldynf332(zi1s(2),z2s(2),z3s(2),t,5)
 
     L332 = L332t - L332
     Kdynf332 = L332
@@ -2903,21 +2903,21 @@ contains
     real(8),intent(in) :: t,delt
     real(8) :: L333,L333t
      
-    L333t = Ldynf333(zii1s(0),z2s(0),z3s(0),t,0)&
-          - Ldynf333(zi1s(0),z2s(0),z3s(0),t,1)&
-          + Ldynf333(zii1s(1),z2s(1),z3s(1),t,2)&
-          - Ldynf333(zi1s(1),z2s(1),z3s(1),t,3)&
-          + Ldynf333(zii1s(2),z2s(2),z3s(2),t,4)&
-          - Ldynf333(zi1s(2),z2s(2),z3s(2),t,5)&
-          + 1.0_8/p*Hevix( z2s(0) )*Hevix( z2s(1) )*Hevix( z2s(2) )*Heviw( t-abs(z3s(0))/Cl )
+    L333t = Ldynf333(zii1s(0),z2s(0),z3s(0),t+delt,0)&
+          - Ldynf333(zi1s(0),z2s(0),z3s(0),t+delt,1)&
+          + Ldynf333(zii1s(1),z2s(1),z3s(1),t+delt,2)&
+          - Ldynf333(zi1s(1),z2s(1),z3s(1),t+delt,3)&
+          + Ldynf333(zii1s(2),z2s(2),z3s(2),t+delt,4)&
+          - Ldynf333(zi1s(2),z2s(2),z3s(2),t+delt,5)&
+          + 1.0_8/p*Hevix( z2s(0) )*Hevix( z2s(1) )*Hevix( z2s(2) )*Heviw( t+delt-abs(z3s(0))/Cl )
 
-    L333 = Ldynf333(zii1s(0),z2s(0),z3s(0),t-delt,0)&
-         - Ldynf333(zi1s(0),z2s(0),z3s(0),t-delt,1)&
-         + Ldynf333(zii1s(1),z2s(1),z3s(1),t-delt,2)&
-         - Ldynf333(zi1s(1),z2s(1),z3s(1),t-delt,3)&
-         + Ldynf333(zii1s(2),z2s(2),z3s(2),t-delt,4)&
-         - Ldynf333(zi1s(2),z2s(2),z3s(2),t-delt,5)&
-         + 1.0_8/p*Hevix( z2s(0) )*Hevix( z2s(1) )*Hevix( z2s(2) )*Heviw( t-delt-abs(z3s(0))/Cl )
+    L333 = Ldynf333(zii1s(0),z2s(0),z3s(0),t,0)&
+         - Ldynf333(zi1s(0),z2s(0),z3s(0),t,1)&
+         + Ldynf333(zii1s(1),z2s(1),z3s(1),t,2)&
+         - Ldynf333(zi1s(1),z2s(1),z3s(1),t,3)&
+         + Ldynf333(zii1s(2),z2s(2),z3s(2),t,4)&
+         - Ldynf333(zi1s(2),z2s(2),z3s(2),t,5)&
+         + 1.0_8/p*Hevix( z2s(0) )*Hevix( z2s(1) )*Hevix( z2s(2) )*Heviw( t-abs(z3s(0))/Cl )
       
     L333 = L333t - L333
     Kdynf333 = L333
